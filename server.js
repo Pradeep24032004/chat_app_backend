@@ -12,7 +12,7 @@ const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://664a128547e656cd6e9881e1--stupendous-dolphin-d39251.netlify.app/",
     methods: ["GET", "POST"]
   }
 });
@@ -21,7 +21,12 @@ const io = new Server(httpServer, {
 mongoose.connect('mongodb+srv://pradeep24032004:Nps23JRnixKHWV9A@chatapp.7dl7wsr.mongodb.net/?retryWrites=true&w=majority&appName=chatapp')
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
-app.use(cors());
+app.use(cors({
+  origin: 'https://664a128547e656cd6e9881e1--stupendous-dolphin-d39251.netlify.app/', // Replace this with your actual Netlify URL
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Authorization'],
+  credentials: true
+}));
 app.use(express.json());
 
 const PORT = 5000;
